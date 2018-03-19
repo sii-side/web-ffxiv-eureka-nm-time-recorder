@@ -1,0 +1,37 @@
+{
+  "name": "web-ffxiv-eureka-nm-time-recorder",
+  "version": "1.0.0",
+  "description": "FFXIV tool",
+  "author": "sii",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/sii-side/web-ffxiv-eureka-nm-time-recorder.git"
+  },
+  "scripts": {
+    "tree": "tree -I node_modules --dirsfirst",
+    "webpack:prod": "webpack --mode production",
+    "webpack:dev": "webpack --mode development",
+    "watch:prod": "nodemon --ignore docs/ --ignore node_modules/ -e js,ts,mjs,css,scss,ejs,html -x \"npm run webpack:prod\"",
+    "watch:dev": "nodemon --ignore docs/ --ignore node_modules/ -e js,ts,mjs,css,scss,ejs,html -x \"npm run webpack:dev\""
+  },
+  "devDependencies": {
+    "autoprefixer": "^8.1.0",
+    "css-loader": "^0.28.11",
+    "ejs-compiled-loader": "^1.1.0",
+    "extract-text-webpack-plugin": "^4.0.0-beta.0",
+    "file-loader": "^1.1.11",
+    "html-webpack-plugin": "^3.0.6",
+    "node-sass": "^4.7.2",
+    "nodemon": "^1.17.2",
+    "npm-run-all": "^4.1.2",
+    "postcss-loader": "^2.1.2",
+    "sass-loader": "^6.0.7",
+    "style-loader": "^0.20.3",
+    "ts-loader": "^4.1.0",
+    "typescript": "^2.7.2",
+    "webpack": "^4.1.1",
+    "webpack-cli": "^2.0.12",
+    "webpack-dev-server": "^3.1.1"
+  }
+}
