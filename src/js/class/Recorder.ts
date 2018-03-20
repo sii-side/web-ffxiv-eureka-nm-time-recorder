@@ -30,17 +30,28 @@ export default class Recorder {
     this.notoriousMonsters[index].kill()
   }
 
+  private sort () {
+    return this.notoriousMonsters.slice().sort((a, b) => a.unix() - b.unix())
+  }
+
   private text () {
     return this.sort().map(notoriousMonster => {
       return notoriousMonster.text()
     }).filter(text => !!text).join('\u0020')
   }
 
-  private sort () {
-    return this.notoriousMonsters.slice().sort((a, b) => a.unix() - b.unix())
-  }
-
   private output () {
     this.record.output(this.text())
+  }
+
+  public reset () {
+    this.notoriousMonsters.forEach(notoriousMonster => {
+      notoriousMonster.reset()
+    })
+    this.output()
+  }
+
+  public selectRecord () {
+    this.record.select()
   }
 }

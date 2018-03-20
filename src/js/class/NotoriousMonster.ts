@@ -27,6 +27,10 @@ export default class NotoriousMonster {
     this.time = new Time()
   }
 
+  public reset () {
+    this.time = null
+  }
+
   public text () {
     return this.time ? `${this.shortName}${this.time.format()}` : ''
   }

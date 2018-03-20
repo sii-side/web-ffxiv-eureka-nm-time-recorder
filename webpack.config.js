@@ -56,5 +56,11 @@ module.exports = {
         use: 'ejs-compiled-loader'
       }
     ]
+  },
+  devServer: {
+    contentBase: path.resolve(__dirname, 'docs'),
+    compress: true,
+    open: 'Google Chrome',
+    port: 9000
   }
 }

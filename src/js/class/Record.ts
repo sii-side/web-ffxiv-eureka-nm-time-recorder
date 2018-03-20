@@ -8,4 +8,8 @@ export default class Record {
   public output (text) {
     this.element.value = text
   }
+
+  public select () {
+    this.element.select()
+  }
 }

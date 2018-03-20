@@ -10,10 +10,12 @@
   },
   "scripts": {
     "tree": "tree -I node_modules --dirsfirst",
+    "dev": "run-p watch:dev server:dev",
     "webpack:prod": "webpack --mode production",
     "webpack:dev": "webpack --mode development",
     "watch:prod": "nodemon --ignore docs/ --ignore node_modules/ -e js,ts,mjs,css,scss,ejs,html -x \"npm run webpack:prod\"",
-    "watch:dev": "nodemon --ignore docs/ --ignore node_modules/ -e js,ts,mjs,css,scss,ejs,html -x \"npm run webpack:dev\""
+    "watch:dev": "nodemon --ignore docs/ --ignore node_modules/ -e js,ts,mjs,css,scss,ejs,html -x \"npm run webpack:dev\"",
+    "server:dev": "webpack-dev-server --mode development"
   },
   "devDependencies": {
     "autoprefixer": "^8.1.0",
