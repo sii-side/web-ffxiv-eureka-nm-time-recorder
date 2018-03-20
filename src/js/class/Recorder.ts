@@ -1,53 +1,47 @@
-import NotoriousMonster from './NotoriousMonster'
+import NotoriousMonsters from './NotoriousMonsters'
 import Record from './Record'
+import Copy from './Copy'
+import Reset from './Reset'
 
 export default class Recorder {
   private elements: Array<HTMLInputElement>
-  private notoriousMonsters: Array<NotoriousMonster>
+  private notoriousMonsters: NotoriousMonsters
   private record: Record
+  private copy: Copy
+  private reset: Reset
 
   public constructor () {
     this.elements = Array.from(document.querySelectorAll('.report input'))
-    this.notoriousMonsters = this.elements.map(element => new NotoriousMonster(element.name, element.dataset.shortName))
+    this.notoriousMonsters = new NotoriousMonsters(this.elements)
     this.record = new Record()
+    this.copy = new Copy(this)
+    this.reset = new Reset(this)
   }
 
   public init () : void {
     this.attach()
+    this.copy.init()
+    this.reset.init()
   }
 
   private attach () : void {
     this.elements.forEach(element => {
-      element.addEventListener('click', e => {
-        this.report(element)
-        this.output()
-      })
+      element.addEventListener('click', e => this.report(element))
     })
   }
 
   private report (input) : void {
     const index = this.elements.indexOf(input)
-    this.notoriousMonsters[index].kill()
-  }
-
-  private sort () : Array<NotoriousMonster> {
-    return this.notoriousMonsters.slice().sort((a, b) => a.unix() - b.unix())
-  }
-
-  private text () : string {
-    return this.sort().map(notoriousMonster => {
-      return notoriousMonster.text()
-    }).filter(text => !!text).join('\u0020')
+    this.notoriousMonsters.kill(index)
+    this.output()
   }
 
   private output () : void {
-    this.record.output(this.text())
+    this.record.output(this.notoriousMonsters.text())
   }
 
-  public reset () : void {
-    this.notoriousMonsters.forEach(notoriousMonster => {
-      notoriousMonster.reset()
-    })
+  public resetAll () : void {
+    this.notoriousMonsters.reset()
     this.output()
   }
 

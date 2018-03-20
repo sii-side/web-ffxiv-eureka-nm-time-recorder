@@ -18,6 +18,6 @@ export default class Reset {
   }
 
   private reset () : void {
-    this.recorder.reset()
+    this.recorder.resetAll()
   }
 }
