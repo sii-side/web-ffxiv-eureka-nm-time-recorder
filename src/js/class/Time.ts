@@ -18,6 +18,6 @@ export default class Time {
   }
 
   public format () {
-    return `${this.hour()}:${this.min()}`
+    return `${this.hour()}${this.min()}`
   }
 }
