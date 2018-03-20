@@ -12,11 +12,11 @@ export default class Recorder {
     this.record = new Record()
   }
 
-  public init () {
+  public init () : void {
     this.attach()
   }
 
-  private attach () {
+  private attach () : void {
     this.elements.forEach(element => {
       element.addEventListener('click', e => {
         this.report(element)
@@ -25,33 +25,33 @@ export default class Recorder {
     })
   }
 
-  private report (input) {
+  private report (input) : void {
     const index = this.elements.indexOf(input)
     this.notoriousMonsters[index].kill()
   }
 
-  private sort () {
+  private sort () : Array<NotoriousMonster> {
     return this.notoriousMonsters.slice().sort((a, b) => a.unix() - b.unix())
   }
 
-  private text () {
+  private text () : string {
     return this.sort().map(notoriousMonster => {
       return notoriousMonster.text()
     }).filter(text => !!text).join('\u0020')
   }
 
-  private output () {
+  private output () : void {
     this.record.output(this.text())
   }
 
-  public reset () {
+  public reset () : void {
     this.notoriousMonsters.forEach(notoriousMonster => {
       notoriousMonster.reset()
     })
     this.output()
   }
 
-  public selectRecord () {
+  public selectRecord () : void {
     this.record.select()
   }
 }

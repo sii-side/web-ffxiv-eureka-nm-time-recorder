@@ -9,15 +9,15 @@ export default class Copy {
     this.element = document.querySelector('.record input[type=button]')
   }
 
-  public init () {
+  public init () : void {
     this.attach()
   }
 
-  private attach () {
+  private attach () : void {
     this.element.addEventListener('click', e => this.copy())
   }
 
-  private copy () {
+  private copy () : void {
     this.recorder.selectRecord()
     document.execCommand('copy')
   }

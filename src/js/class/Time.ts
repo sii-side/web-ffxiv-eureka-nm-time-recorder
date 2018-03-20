@@ -5,19 +5,19 @@ export default class Time {
     this.time = new Date()
   }
 
-  public unix () {
+  public unix () : number {
     return this.time.getTime()
   }
 
-  private hour () {
+  private hour () : string {
     return `0${this.time.getHours()}`.slice(-2)
   }
 
-  private min () {
+  private min () : string {
     return `0${this.time.getMinutes()}`.slice(-2)
   }
 
-  public format () {
+  public format () : string {
     return `${this.hour()}${this.min()}`
   }
 }

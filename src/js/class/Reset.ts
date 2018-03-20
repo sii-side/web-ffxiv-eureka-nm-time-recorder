@@ -9,15 +9,15 @@ export default class Reset {
     this.element = document.querySelector('.record input[type=reset]')
   }
 
-  public init () {
+  public init () : void {
     this.attach()
   }
 
-  private attach () {
+  private attach () : void {
     this.element.addEventListener('click', e => this.reset())
   }
 
-  private reset () {
+  private reset () : void {
     this.recorder.reset()
   }
 }

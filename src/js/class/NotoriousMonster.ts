@@ -11,15 +11,15 @@ export default class NotoriousMonster {
     this.time = null
   }
 
-  public full () {
+  public full () : string {
     return this.fullName
   }
 
-  public short (isHalfWidth = true) {
+  public short (isHalfWidth = true) : string {
     return isHalfWidth ? this.halfWidth() : this.shortName
   }
 
-  private halfWidth () {
+  private halfWidth () : string {
     const map = {
       ア: "ｱ", イ: "ｲ", ウ: "ｳ", エ: "ｴ", オ: "ｵ",
       カ: "ｶ", キ: "ｷ", ク: "ｸ", ケ: "ｹ", コ: "ｺ",
@@ -43,19 +43,19 @@ export default class NotoriousMonster {
     return this.shortName.replace(/[ァ-ヶー]/g, m => map[m])
   }
 
-  public unix () {
+  public unix () : number {
     return this.time ? this.time.unix() : 0
   }
 
-  public kill () {
+  public kill () : void {
     this.time = new Time()
   }
 
-  public reset () {
+  public reset () : void {
     this.time = null
   }
 
-  public text () {
+  public text () : string {
     return this.time ? `${this.short()}${this.time.format()}` : ''
   }
 }
