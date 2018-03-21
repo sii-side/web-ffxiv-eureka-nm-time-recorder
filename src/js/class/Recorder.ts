@@ -2,6 +2,7 @@ import NotoriousMonsters from './NotoriousMonsters'
 import Record from './Record'
 import Copy from './Copy'
 import Reset from './Reset'
+import Import from './Import'
 
 export default class Recorder {
   private elements: Array<HTMLInputElement>
@@ -9,6 +10,7 @@ export default class Recorder {
   private record: Record
   private copy: Copy
   private reset: Reset
+  private import: Import
 
   public constructor () {
     this.elements = Array.from(document.querySelectorAll('.report input'))
@@ -16,12 +18,14 @@ export default class Recorder {
     this.record = new Record()
     this.copy = new Copy(this)
     this.reset = new Reset(this)
+    this.import = new Import(this)
   }
 
   public init () : void {
     this.attach()
     this.copy.init()
     this.reset.init()
+    this.import.init()
   }
 
   private attach () : void {
@@ -47,5 +51,12 @@ export default class Recorder {
 
   public selectRecord () : void {
     this.record.select()
+  }
+
+  public importReport (reports) : void {
+    reports.forEach(report => {
+      this.report(this.elements[report.index])
+    })
+    this.output()
   }
 }

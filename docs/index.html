@@ -33,15 +33,15 @@
 
 <fieldset class="record">
   <legend>討伐記録</legend>
-  <textarea cols="50" rows="10" readonly="readonly"></textarea>
+  <textarea cols="50" rows="10" readonly="readonly"></textarea><br>
   <input type="button" value="コピー">
   <input type="reset" value="リセット">
 </fieldset>
 
 <fieldset class="import">
-  <legend>インポート（実装中）</legend>
-  <textarea cols="50" rows="10" disabled="disabled"></textarea><br>
-  <input type="button" value="インポート" disabled="disabled">
+  <legend>インポート</legend>
+  <textarea cols="50" rows="10"></textarea><br>
+  <input type="button" value="インポート">
 </fieldset>
 
 <fieldset class="usage">
@@ -54,9 +54,9 @@
     <dt>インポートで受け入れ可能な形式</dt>
     <dd>
       <ul>
-        <li>時間：半角のみ (hhmm or hh:mm)</li>
-        <li>NM名：全角フルネーム、全角ショートネーム、半角ショートネーム、その他愛称</li>
-        <li>区切り：全角スペース、半角スペース</li>
+        <li>時間：半角のみ (<code>hhmm</code> or <code>hh:mm</code>)</li>
+        <li>NM名：全角ショートネーム、半角ショートネーム、その他愛称（例：アミメット -> 恐竜）</li>
+        <li>区切り：全角スペース、半角スペース、読点</li>
       </ul>
     </dd>
   </dl>

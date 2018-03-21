@@ -16,7 +16,7 @@ export default class NotoriousMonster {
     return this.fullName
   }
 
-  public short (isHalfWidth = true) : string {
+  public short (isHalfWidth: boolean = true) : string {
     return isHalfWidth ? this.halfWidth() : this.shortName
   }
 

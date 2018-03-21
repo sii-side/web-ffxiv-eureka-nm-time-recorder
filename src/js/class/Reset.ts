@@ -4,7 +4,7 @@ export default class Reset {
   private recorder: Recorder
   private element: HTMLInputElement
 
-  public constructor (recorder) {
+  public constructor (recorder: Recorder) {
     this.recorder = recorder
     this.element = document.querySelector('.record input[type=reset]')
   }

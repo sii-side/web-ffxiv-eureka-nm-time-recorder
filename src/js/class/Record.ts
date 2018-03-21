@@ -5,7 +5,7 @@ export default class Record {
     this.element = document.querySelector('.record textarea')
   }
 
-  public output (text) : void {
+  public output (text: string) : void {
     this.element.value = text
   }
 

@@ -3,11 +3,11 @@ import NotoriousMonster from './NotoriousMonster'
 export default class NotoriousMonsters {
   private all : Array<NotoriousMonster>
 
-  public constructor (elements) {
+  public constructor (elements: Array<HTMLInputElement>) {
     this.all = elements.map(element => new NotoriousMonster(element.name, element.dataset.shortName))
   }
 
-  public kill (index) {
+  public kill (index: number) {
     this.all[index].kill()
   }
 

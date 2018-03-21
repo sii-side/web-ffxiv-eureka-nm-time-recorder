@@ -1,8 +1,8 @@
 export default class Time {
   private time: Date
 
-  public constructor () {
-    this.time = new Date()
+  public constructor (time: Date = null) {
+    this.time = time ? time : new Date()
   }
 
   public unix () : number {
