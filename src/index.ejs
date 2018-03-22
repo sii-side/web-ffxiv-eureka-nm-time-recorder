@@ -44,6 +44,27 @@
   <input type="button" value="インポート">（現在の討伐記録はリセットされます）
 </fieldset>
 
+<fieldset class="settings">
+  <legend>設定</legend>
+
+  <dl>
+    <dt>出力フォーマット</dt>
+    <dd>
+      <label><input type="checkbox" name="isHalfWidth">NM名を半角で出力する</label><br>
+      <label><input type="checkbox" name="useBracket">時刻に大括弧を付ける</label><br>
+      <label><input type="checkbox" name="useColon">時刻にコロンを付ける</label><br>
+      <label><input type="checkbox" name="usePunctuation">区切りをスペースではなく読点にする</label>
+    </dd>
+
+    <dt>その他の設定</dt>
+    <dd>
+      <label><input type="checkbox" name="sortByIndex">討伐順ではなくLv順に並べる</label><br>
+      <label><input type="checkbox" name="outputNoRecord">討伐記録のないNMも出力する</label>
+    </dd>
+  </dl>
+
+</fieldset>
+
 <fieldset class="usage">
   <legend>使い方</legend>
 

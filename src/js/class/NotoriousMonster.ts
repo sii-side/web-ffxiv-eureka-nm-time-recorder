@@ -1,4 +1,5 @@
 import Time from './Time'
+import Settings from './Settings'
 import kanaMap from '../data/kana'
 
 export default class NotoriousMonster {
@@ -9,7 +10,7 @@ export default class NotoriousMonster {
   public constructor (name, shortName) {
     this.fullName = name
     this.shortName = shortName
-    this.time = null
+    this.time = new Time()
   }
 
   public full () : string {
@@ -33,10 +34,18 @@ export default class NotoriousMonster {
   }
 
   public reset () : void {
-    this.time = null
+    this.time = new Time()
   }
 
-  public text () : string {
-    return this.time ? `${this.short(false)}${this.time.format()}` : ''
+  public output (settings: Settings) : string {
+    return this.time ? `${
+      this.short(settings.item('isHalfWidth'))
+    }${
+      this.time.format(settings.item('useColon'), settings.item('useBracket'))
+    }` : ''
+  }
+
+  public hasTime () : boolean {
+    return !this.time.isNull()
   }
 }

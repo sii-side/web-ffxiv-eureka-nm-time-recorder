@@ -28,6 +28,7 @@ export default class Import {
   private import () : void {
     const reports: Array<ParsedReport> = this.split().filter(parsed => parsed.index > -1 && parsed.time)
     this.recorder.importReport(reports)
+    this.element.value = ''
   }
 
   private split () : Array<ParsedReport> {

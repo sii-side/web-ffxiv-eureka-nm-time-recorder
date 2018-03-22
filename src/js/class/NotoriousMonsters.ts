@@ -1,4 +1,5 @@
 import NotoriousMonster from './NotoriousMonster'
+import Settings from './Settings'
 
 export default class NotoriousMonsters {
   private all : Array<NotoriousMonster>
@@ -11,14 +12,24 @@ export default class NotoriousMonsters {
     this.all[index].kill(time)
   }
 
-  private sort () : Array<NotoriousMonster> {
-    return this.all.slice().sort((a, b) => a.unix() - b.unix())
+  private sort (monsters: Array<NotoriousMonster>, sortByIndex: boolean = false) : Array<NotoriousMonster> {
+    return sortByIndex ? monsters : monsters.slice().sort((a, b) => a.unix() - b.unix())
   }
 
-  public text () : string {
-    return this.sort().map(notoriousMonster => {
-      return notoriousMonster.text()
-    }).filter(text => !!text).join('\u0020')
+  private filter (monsters: Array<NotoriousMonster>, outputNoRecord: boolean = false) : Array<NotoriousMonster> {
+    return outputNoRecord ? monsters : monsters.slice().filter(monster => monster.hasTime())
+  }
+
+  private text (monsters: Array<NotoriousMonster>, settings: Settings) : Array<string> {
+    return monsters.map(monster => monster.output(settings))
+  }
+
+  public output (settings: Settings) : string {
+    const delimiter: string = settings.item('usePunctuation') ? '、' : '\u0020'
+    const sortedMonsters: Array<NotoriousMonster> = this.sort(this.all, settings.item('sortByIndex'))
+    const filterdMonsters: Array<NotoriousMonster> = this.filter(sortedMonsters, settings.item('outputNoRecord')) 
+    const monsterTexts: Array<string> = this.text(filterdMonsters, settings)
+    return monsterTexts.join(delimiter)
   }
 
   public reset () : void {
