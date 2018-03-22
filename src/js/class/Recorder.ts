@@ -54,6 +54,7 @@ export default class Recorder {
   }
 
   public importReport (reports) : void {
+    this.resetAll()
     reports.forEach(report => {
       this.report(this.elements[report.index], report.time)
     })
