@@ -17,7 +17,7 @@ export default class Time {
     return `0${this.time.getMinutes()}`.slice(-2)
   }
 
-  public format () : string {
-    return `${this.hour()}${this.min()}`
+  public format (useColon: boolean = false, useBracket: boolean = false) : string {
+    return `${useBracket ? '[' : ''}${this.hour()}${useColon ? ':' : ''}${this.min()}${useBracket ? ']' : ''}`
   }
 }

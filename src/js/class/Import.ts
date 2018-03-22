@@ -26,7 +26,7 @@ export default class Import {
   }
 
   private import () : void {
-    const reports: Array<ParsedReport> = this.split().filter(parsed => parsed.index > 0 && parsed.time)
+    const reports: Array<ParsedReport> = this.split().filter(parsed => parsed.index > -1 && parsed.time)
     this.recorder.importReport(reports)
   }
 
@@ -42,7 +42,7 @@ export default class Import {
   }
 
   private parseName (text: string) : number|null {
-    const regExp = /[ぁ-んァ-ヶー・ｦ-ﾟ\u4E00-\u9FD5]+/u
+    const regExp = /[a-zA-Zぁ-んァ-ヶー・ｦ-ﾟ\u4E00-\u9FD5]+/u
     return regExp.test(text) ? this.findNameIndex(text.match(regExp)[0]) : null
   }
 
@@ -51,7 +51,7 @@ export default class Import {
   }
 
   private parseTime (text: string) : Date|null {
-    const regExp: RegExp = /(\d{1,2}):?(\d{2})/
+    const regExp: RegExp = /\[?(\d{1,2}):?(\d{2})\]?/
     if (regExp.test(text)) {
       const matchResult: RegExpMatchArray = text.match(regExp)
       return this.adjustTime(parseInt(matchResult[1]), parseInt(matchResult[2]))

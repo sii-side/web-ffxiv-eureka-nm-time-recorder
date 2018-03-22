@@ -37,6 +37,6 @@ export default class NotoriousMonster {
   }
 
   public text () : string {
-    return this.time ? `${this.short()}${this.time.format()}` : ''
+    return this.time ? `${this.short(false)}${this.time.format()}` : ''
   }
 }
