@@ -60,7 +60,7 @@ module.exports = {
   devServer: {
     contentBase: path.resolve(__dirname, 'docs'),
     compress: true,
-    open: 'Google Chrome',
-    port: 9000
+    host: '0.0.0.0',
+    open: true
   }
 }

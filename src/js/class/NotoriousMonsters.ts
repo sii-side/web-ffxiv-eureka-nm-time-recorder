@@ -7,8 +7,8 @@ export default class NotoriousMonsters {
     this.all = elements.map(element => new NotoriousMonster(element.name, element.dataset.shortName))
   }
 
-  public kill (index: number) {
-    this.all[index].kill()
+  public kill (index: number, time: Date = null) {
+    this.all[index].kill(time)
   }
 
   private sort () : Array<NotoriousMonster> {

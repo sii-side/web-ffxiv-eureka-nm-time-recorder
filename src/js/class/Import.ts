@@ -26,14 +26,12 @@ export default class Import {
   }
 
   private import () : void {
-    console.dir(this.split())
     const reports: Array<ParsedReport> = this.split().filter(parsed => parsed.index > 0 && parsed.time)
-    console.dir(reports)
     this.recorder.importReport(reports)
   }
 
   private split () : Array<ParsedReport> {
-    return this.element.value.split(/[\u0020\u3000\|\/、]+/).map(text => this.parse(text))
+    return this.element.value.split(/[\u0020\u3000、。､｡，．,\.]+/).map(text => this.parse(text))
   }
 
   private parse (text: string) : ParsedReport {
@@ -44,7 +42,7 @@ export default class Import {
   }
 
   private parseName (text: string) : number|null {
-    const regExp = /[ぁ-んァ-ケー・ｦ-ﾟ一-龠]+/u
+    const regExp = /[ぁ-んァ-ヶー・ｦ-ﾟ\u4E00-\u9FD5]+/u
     return regExp.test(text) ? this.findNameIndex(text.match(regExp)[0]) : null
   }
 

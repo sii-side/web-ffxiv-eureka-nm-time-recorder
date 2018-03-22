@@ -28,8 +28,8 @@ export default class NotoriousMonster {
     return this.time ? this.time.unix() : 0
   }
 
-  public kill () : void {
-    this.time = new Time()
+  public kill (time: Date = null) : void {
+    this.time = new Time(time)
   }
 
   public reset () : void {

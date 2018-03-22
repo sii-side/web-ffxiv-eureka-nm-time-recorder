@@ -34,9 +34,9 @@ export default class Recorder {
     })
   }
 
-  private report (input) : void {
+  private report (input: HTMLInputElement, time: Date = null) : void {
     const index = this.elements.indexOf(input)
-    this.notoriousMonsters.kill(index)
+    this.notoriousMonsters.kill(index, time)
     this.output()
   }
 
@@ -55,7 +55,7 @@ export default class Recorder {
 
   public importReport (reports) : void {
     reports.forEach(report => {
-      this.report(this.elements[report.index])
+      this.report(this.elements[report.index], report.time)
     })
     this.output()
   }
