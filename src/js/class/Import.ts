@@ -26,7 +26,9 @@ export default class Import {
   }
 
   private import () : void {
+    console.dir(this.split())
     const reports: Array<ParsedReport> = this.split().filter(parsed => parsed.index > 0 && parsed.time)
+    console.dir(reports)
     this.recorder.importReport(reports)
   }
 
@@ -43,7 +45,6 @@ export default class Import {
 
   private parseName (text: string) : number|null {
     const regExp = /[ぁ-んァ-ケー・ｦ-ﾟ一-龠]+/u
-    console.dir(text.match(regExp))
     return regExp.test(text) ? this.findNameIndex(text.match(regExp)[0]) : null
   }
 

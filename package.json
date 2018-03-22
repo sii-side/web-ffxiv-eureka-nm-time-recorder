@@ -10,6 +10,7 @@
   },
   "scripts": {
     "tree": "tree -I node_modules --dirsfirst",
+    "prod": "run-p watch:prod server:prod",
     "dev": "run-p watch:dev server:dev",
     "webpack:prod": "webpack --mode production",
     "webpack:dev": "webpack --mode development",
